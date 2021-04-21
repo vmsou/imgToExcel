@@ -9,6 +9,7 @@ from time import perf_counter
 
 
 def evaluate_speed():
+    """Simulates converting an img to excel and returns speed"""
     widt, heig = 5, 5
     eval_start = perf_counter()
     temp_wb = openpyxl.Workbook()
@@ -48,6 +49,7 @@ blue_col = ColorScaleRule(start_type='num', start_value=0, start_color=blue[0],
 
 
 def adjust_columns(sheet, rgb_colors, width_size):
+    """Applies conditional formatting to appropriate cells"""
     for column in range(1, len(rgb_colors[0])):
         pos = ((column - 1) * 3) + 1
         to_r = get_column_letter(pos + 2)  # pos
@@ -62,11 +64,13 @@ def adjust_columns(sheet, rgb_colors, width_size):
 
 
 def adjust_rows(sheet, rgb_colors, height_size):
+    """Resizes rows to match image size"""
     for row in range(1, len(rgb_colors) + 1):
         sheet.row_dimensions[row].height = height_size
 
 
 def img_to_excel(sheet, rgb_colors):
+    """Main Function, receives RGB values and translates to cell values"""
     for column in range(1, len(rgb_colors[0])):
         for row in range(1, len(rgb_colors)):
             rgb_pos = ((column - 1) * 3) + 1
