@@ -83,11 +83,10 @@ def img_to_excel(sheet, rgb_colors):
 
 
 RATIO = 1
-IMG_PATH = 'download.jpeg'
-
 
 def main():
     global RATIO
+    IMG_PATH = input("Image Path: ")
     colors = cv.imread(IMG_PATH)
     hg, wid, _ = colors.shape
     print(f"For an image {wid} x {hg} it will take aprox. {((hg / RATIO)  * (wid / RATIO)) / pxl_per_sec:.2f}"
