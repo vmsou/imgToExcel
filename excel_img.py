@@ -1,10 +1,10 @@
 import sys
 import cv2 as cv
 import openpyxl
+import numpy as np
 from openpyxl.formatting.rule import ColorScaleRule
 from openpyxl.styles import Color
 from openpyxl.utils.cell import get_column_letter
-import numpy as np
 from time import perf_counter
 
 
@@ -88,9 +88,11 @@ def img_to_excel(sheet, rgb_colors):
 
 RATIO = 1
 
+
 def main():
     global RATIO
-    IMG_PATH = input("Image Path: ")
+    FILENAME = input("File Name: ")
+    IMG_PATH = 'images/' + FILENAME
     colors = cv.imread(IMG_PATH)
     hg, wid, _ = colors.shape
     print(f"For an image {wid} x {hg} it will take aprox. {((hg / RATIO)  * (wid / RATIO)) / pxl_per_sec:.2f}"
@@ -124,7 +126,7 @@ def main():
     adjust_rows(sheet, rgb_colors, height_size)
     img_to_excel(sheet, rgb_colors)
 
-    wb.save(f"{IMG_PATH.split('.')[0]}.xlsx")
+    wb.save(f"output/{FILENAME.split('.')[0]}.xlsx")
     end = perf_counter()
 
     print(f'It took {end - start:.2f} seconds')
