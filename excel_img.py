@@ -94,6 +94,9 @@ def main():
     FILENAME = input("File Name: ")
     IMG_PATH = 'images/' + FILENAME
     colors = cv.imread(IMG_PATH)
+    if colors is None:
+        raise FileNotFoundError("Invalid Image Path.")
+
     hg, wid, _ = colors.shape
     print(f"For an image {wid} x {hg} it will take aprox. {((hg / RATIO)  * (wid / RATIO)) / pxl_per_sec:.2f}"
           f" seconds at RATIO: {RATIO}")
@@ -102,6 +105,8 @@ def main():
     if proceed.lower() == "change":
         while not end_proceed:
             RATIO = int(input("RATIO: "))
+            if RATIO < 1:
+                raise ValueError("Value must be positive and above 1")
             print(f"For an image {wid} x {hg} it will take aprox. {((hg / RATIO) * (wid / RATIO)) / pxl_per_sec:.2f} seconds at RATIO: {RATIO}")
             confirm = input("Confirm (y/n/exit): ")
             if confirm.lower() == 'y':
