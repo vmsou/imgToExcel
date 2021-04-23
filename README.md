@@ -1,14 +1,14 @@
 # imgToExcel
-Uses spreadsheet cells as RGB colors
+Uses spreadsheet cells as RGB colors, this was one of my first python projects
 
-## Requires
-- openpyxl
-- numpy
-- opencv
+## Utilizes
+- [openpyxl](https://pypi.org/project/openpyxl/)
+- [numpy](https://pypi.org/project/numpy/)
+- [opencv](https://pypi.org/project/opencv-python/)
 
 ## How to use 
 1. Put your images files to [images folder](https://github.com/vmsou/imgToExcel/tree/main/images)
 2. Run excel_img.py
-3. Write the name of the file with extension
-4. Choose Ratio
-5. An excel file will be in [ouput folder](https://github.com/vmsou/imgToExcel/tree/main/output) with the same name of the image file
+3. Write the name of the file with extension when prompted
+4. Choose or change Ratio
+5. An Excel file will be in [ouput folder](https://github.com/vmsou/imgToExcel/tree/main/output) with the same name of the image file
