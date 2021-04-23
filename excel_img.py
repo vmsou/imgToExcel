@@ -1,3 +1,4 @@
+import os
 import sys
 import cv2 as cv
 import openpyxl
@@ -33,6 +34,7 @@ def evaluate_speed():
     pix_per_second = pixels / (eval_end - eval_start)
 
     return pix_per_second * 2
+
 
 pxl_per_sec = evaluate_speed()  # 10146.3314070309
 
@@ -86,11 +88,9 @@ def img_to_excel(sheet, rgb_colors):
                 print(f"column: {column}, {rgb_pos}, row: {row}, {e}")
 
 
-RATIO = 1
-
-
 def main():
-    global RATIO
+    RATIO = 1
+    print("Files Found:", ", ".join(os.listdir("images")))
     FILENAME = input("File Name: ")
     IMG_PATH = 'images/' + FILENAME
     colors = cv.imread(IMG_PATH)
@@ -112,6 +112,7 @@ def main():
             if confirm.lower() == 'y':
                 end_proceed = True
             elif confirm.lower() == 'exit':
+                print("Program ended.")
                 sys.exit()
 
     start = perf_counter()
